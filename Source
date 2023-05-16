@@ -1,0 +1,19 @@
+# Load the required package
+library(scatterplot3d)
+# Load the Iris dataset
+data(iris)
+# Convert the Species column to a factor
+iris$Species <- as.factor(iris$Species)
+# Create a 3D scatter plot with colored points and vertical bars
+s3d <- scatterplot3d(iris[,1:3], pch = 20, color = as.numeric(iris$Species),
+ main = "3D Scatter Plot of Iris Dataset",
+ xlab = "Sepal Length (cm)", ylab = "Sepal Width(cm)", zlab = "Petal Length (cm)",
+ box = TRUE, 
+ col.axis = "blue", col.grid = "lightgray",
+ type = "h")
+# Add a legend
+legend("topleft", legend = levels(iris$Species), col = 1:length(levels(iris$Species)), pch = 20)
+# Adjust the viewing angle
+s3d$angle <- 10
+# Rotate the plot
+s3d$rotate <- "d
